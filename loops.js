@@ -110,13 +110,15 @@ const createHtml = (calendarData) => {
     // Added for in front of the for...of loop
     for (const { dayOfWeek, value } of days) {
       const isToday = new Date().getDate() === value;
-      const isWeekend = dayOfWeek === 1 || dayOfWeek === 7; // Added 1 and 7 and used logical OR operator
-      const isAlternate = week % 2 === 0;
+      const isWeekend = dayOfWeek === 1 || dayOfWeek === 7; // Added 1 and 7 and used logical OR operator. 1 represents Sunday and 7 represents Saturday.
+      const isAlternate = week % 2 === 0; // Checks if current week is even or odd. When it === 0 it means it is an even week because it has no remainder when divided by two. Common method used to apply alternating styles to items in a list or grid.
 
       let classString = "table__cell";
 
-      // Passed in isToday, isWeekend and isAlternate and interpolated classString
-      if (isToday) classString = `${classString} table__cell_today`;
+      /**
+       * Reassigns classString variable based on certain conditions
+       */
+      if (isToday) classString = `${classString} table__cell_today`; // Passed in isToday, isWeekend and isAlternate and interpolated classString
       if (isWeekend) classString = `${classString} table__cell_weekend`;
       if (isAlternate) classString = `${classString} table__cell_alternate`;
 
